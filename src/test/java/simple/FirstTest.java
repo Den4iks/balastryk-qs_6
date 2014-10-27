@@ -1,5 +1,6 @@
 package simple;
 
+import application.Summ;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,11 @@ public class FirstTest {
 
    @Test
     public void firstTest () {
-        System.out.println("new print");
-        Assert.assertTrue(true);
+       int answer;
+       Summ testClass= new Summ();
+       answer=testClass.summTwoInteger(2,2);
+       Assert.assertEquals(answer,4);
     }
+
+
 }
