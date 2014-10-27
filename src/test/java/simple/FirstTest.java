@@ -1,21 +1,22 @@
 package simple;
 
-import application.Summ;
+import application.EmailValidator;
+import com.beust.jcommander.Parameter;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
  * Created by pc on 22.10.2014.
  */
 public class FirstTest {
-
-
    @Test
-    public void firstTest () {
-       int answer;
-       Summ testClass= new Summ();
-       answer=testClass.summTwoInteger(2,2);
-       Assert.assertEquals(answer,4);
+   @Parameters({"email"})
+    public void firstTest (String email) {
+       boolean answer;
+       EmailValidator ev= new EmailValidator();
+       Assert.assertTrue(ev.emailParser(email));
     }
 
 
