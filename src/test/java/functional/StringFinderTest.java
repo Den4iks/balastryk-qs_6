@@ -1,24 +1,22 @@
 package functional;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import application.StringFinder;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 /**
  * Created by pc on 27.10.2014.
  */
-public class StringFinder {
+public class StringFinderTest {
 
 
     FileWriter fstream1;
     BufferedWriter out1;
+    StringFinder sf;
     @DataProvider
     public Object [][] strings(){
         return new Object[][]{
@@ -37,8 +35,9 @@ public class StringFinder {
     }
 
     @Test(dataProvider="strings")
-    public void stringMatcher(String string1, String string2){
-        Assert.assertTrue(string1.indexOf(string2) != -1);
+    public void testStringFinder(String string1, String string2){
+        sf = new StringFinder();
+        Assert.assertTrue(sf.stringMatcher(string1, string2));
         try {
             fstream1.write(string1 + " " +string2);
             fstream1.close();
@@ -47,5 +46,6 @@ public class StringFinder {
         }
 
     }
+
 
 }
