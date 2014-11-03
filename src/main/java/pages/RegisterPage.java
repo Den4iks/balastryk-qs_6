@@ -14,14 +14,21 @@ public class RegisterPage {
 
     public boolean registerNewUser(User user){
         fillUserData(user);
-        if(!isPasswordValid(this)){
+        if(!isPasswordsSame(this)){
             System.out.println("Passwords aren't the same");
             return false;
+        }
+        if(!isPasswordLengthCorrect(this)){
+            System.out.println("Password length should be between 4 and 16 symbols");
         }
         if(!isEmailValid(this)){
             System.out.println("Email is not valid");
             return false;
         }
+        if(!isNickLengthCorrect(this)){
+            System.out.println("Password length should be between 1 and 30 symbols");
+        }
+
         return true;
     }
 
@@ -32,12 +39,30 @@ public class RegisterPage {
     this.repeatPassword = user.repeatPassword;
     }
 
-    public boolean isPasswordValid(RegisterPage registerPage){
+    public boolean isPasswordsSame(RegisterPage registerPage){
         if (this.password==this.repeatPassword){
             return true;
         }else{
             return false;
         }
+    }
+
+    public boolean isPasswordLengthCorrect(RegisterPage registerPage){
+        if(this.password.length()>4&&this.password.length()<16){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public boolean isNickLengthCorrect(RegisterPage registerPage){
+        if(this.nickName.length()>1&&this.nickName.length()<30){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     public boolean isEmailValid(RegisterPage registerPage){
