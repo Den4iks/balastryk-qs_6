@@ -20,6 +20,7 @@ public class RegisterPage {
         }
         if(!isPasswordLengthCorrect(this)){
             System.out.println("Password length should be between 4 and 16 symbols");
+            return false;
         }
         if(!isEmailValid(this)){
             System.out.println("Email is not valid");
@@ -27,6 +28,7 @@ public class RegisterPage {
         }
         if(!isNickLengthCorrect(this)){
             System.out.println("Password length should be between 1 and 30 symbols");
+            return false;
         }
 
         return true;
