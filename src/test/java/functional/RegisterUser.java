@@ -28,8 +28,8 @@ public class RegisterUser {
     public Object[][] createData() {
 
         return new Object[][] {
-                new Object[]{ "Cedri@26dd6.com","testUser1","1234","1234","Поздравляем! Вы успешно зарегистрировались на Hotline",true },
-                new Object[]{ "Cedri@26dd6.com","testUser1","1234","1234","Извините, но такой e-mail уже занят" ,false}};
+                new Object[]{ "Absolutely@uniq.com","testUser1","1234","1234","Поздравляем! Вы успешно зарегистрировались на Hotline",true },
+                new Object[]{ "Absolutely@uniq.com","testUser1","1234","1234","Извините, но такой e-mail уже занят" ,false}};
     }
 
 
