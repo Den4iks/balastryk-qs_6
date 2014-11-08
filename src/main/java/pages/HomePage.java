@@ -36,8 +36,13 @@ public class HomePage {
     }
     public void reg(){
         driver.findElement(registerLink).click();
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(emailSelector)));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        /*WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(emailSelector)));*/
     }
 
     public void entedSearchCriteria(String value) throws InterruptedException {

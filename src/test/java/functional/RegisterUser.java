@@ -28,15 +28,14 @@ public class RegisterUser extends AbstractTest {
     public Object[][] createData() {
 
         return new Object[][] {
-                new Object[]{user,"Поздравляем! Вы успешно зарегистрировались на Hotline",true },
-                new Object[]{user,"Извините, но такой e-mail уже занят" ,false}};
+                new Object[]{user,true },
+                new Object[]{user,false}};
     }
 
 
 
     @Test(dataProvider = "users")
     public void registerNewUser(User user,
-                                String checkText,
                                 boolean positive){
         driver.get(PAGE);
 
@@ -49,7 +48,7 @@ public class RegisterUser extends AbstractTest {
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.registerNewUser(user);
         WelcomePage welcomePage = new WelcomePage(driver);
-        Assert.assertEquals((positive)?welcomePage.isOnPage():registerPage.isOnPage(),checkText);
+        Assert.assertEquals((positive)?welcomePage.isOnPage():registerPage.isOnPage(),true);
     }
 
 

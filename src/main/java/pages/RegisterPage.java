@@ -16,7 +16,7 @@ public class RegisterPage {
     private static final By repeatPasswordSelector = By.name("password2");
     private static final By emailSelector = By.name("email");
     private static final By submitSelector = By.className("blue-button");
-    private static final By availableEmailSelector = By.xpath("/html/body/div[6]/div[2]/div[1]/div/div[1]/div/form/div[1]/span");
+    private static final By availableEmailSelector = By.className("errors");
 
     public RegisterPage(){}
 
@@ -86,8 +86,8 @@ public class RegisterPage {
         return m.matches();
     }
 
-    public String isOnPage(){
-        return driver.findElement(availableEmailSelector).getText();
+    public boolean isOnPage(){
+        return driver.findElement(availableEmailSelector).isDisplayed();
     }
 
     public void showHiddenPassword(){

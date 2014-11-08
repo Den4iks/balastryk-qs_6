@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  */
 
 public class WelcomePage {
-    private static final By isRegistredLocator= By.className("title-sub");
+    private static final By isRegistredLocator= By.className("registr-successful");
 
     private static WebDriver driver;
 
@@ -18,7 +18,7 @@ public class WelcomePage {
         this.driver = driver;
     }
 
-    public String isOnPage(){
-    return driver.findElement(isRegistredLocator).getText();
+    public boolean isOnPage(){
+    return driver.findElement(isRegistredLocator).isDisplayed();
     }
 }
