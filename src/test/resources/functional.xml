@@ -6,8 +6,8 @@
 
     <test name="SmokeTest">
         <classes>
-
             <class name="functional.RegisterUser" />
+            <class name="functional.FindProductTest" />
         </classes>
     </test>
 </suite>

@@ -9,13 +9,12 @@ import org.openqa.selenium.WebDriver;
  */
 public class RegisterPage {
     public static WebDriver driver;
-    public String NICKNAME = "nick";
-    public String PASSWORD = "password";
-    public String REPEATPASSWORD = "password2";
-    public String EMAIL = "email";
-    public String SUBMIT = "blue-button";
-    public String AVAILABLEEMAIL = "/html/body/div[6]/div[2]/div[1]/div/div[1]/div/form/div[1]/span";
-
+    private static final By nickNameSelector = By.name("nick");
+    private static final By passwordSelector = By.name("password");
+    private static final By repeatPasswordSelector = By.name("password2");
+    private static final By emailSelector = By.name("email");
+    private static final By submitSelector = By.className("blue-button");
+    private static final By availableEmailSelector = By.xpath("/html/body/div[6]/div[2]/div[1]/div/div[1]/div/form/div[1]/span");
 
     public RegisterPage(){}
 
@@ -41,36 +40,27 @@ public class RegisterPage {
             System.out.println("Password length should be between 1 and 30 symbols");
             return false;
         }*/
-        driver.findElement(By.className(SUBMIT)).click();
+        driver.findElement(submitSelector).click();
         return true;
     }
 
     private void fillUserData(User user){
-    driver.findElement(By.name(EMAIL)).sendKeys(user.email);
-    driver.findElement(By.name(NICKNAME)).sendKeys(user.nickName);
-    driver.findElement(By.name(PASSWORD)).sendKeys(user.password);
-    driver.findElement(By.name(REPEATPASSWORD)).sendKeys(user.repeatPassword);
+    driver.findElement(emailSelector).sendKeys(user.email);
+    driver.findElement(nickNameSelector).sendKeys(user.nickName);
+    driver.findElement(passwordSelector).sendKeys(user.password);
+    driver.findElement(repeatPasswordSelector).sendKeys(user.repeatPassword);
     }
 
-    public boolean isPasswordsSame(){
-        if (PASSWORD==REPEATPASSWORD){
+    public boolean isPasswordsSame(User user){
+        if (user.password==user.repeatPassword){
             return true;
         }else{
             return false;
         }
     }
 
-    public boolean isPasswordLengthCorrect(){
-        if(PASSWORD.length()>4&&PASSWORD.length()<16){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    public boolean isNickLengthCorrect(){
-        if(NICKNAME.length()>1&&NICKNAME.length()<30){
+    public boolean isPasswordLengthCorrect(User user){
+        if(user.password.length()>4&&user.password.length()<16){
             return true;
         }else{
             return false;
@@ -78,15 +68,24 @@ public class RegisterPage {
 
     }
 
-    public boolean isEmailValid(){
+    public boolean isNickLengthCorrect(User user){
+        if(user.nickName.length()>1&&user.nickName.length()<30){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public boolean isEmailValid(User user){
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(EMAIL);
+        java.util.regex.Matcher m = p.matcher(user.email);
         return m.matches();
     }
 
     public String isOnPage(){
-        return driver.findElement(By.xpath(AVAILABLEEMAIL)).getText();
+        return driver.findElement(availableEmailSelector).getText();
     }
 
     public void showHiddenPassword(){

@@ -8,7 +8,6 @@ import java.util.Date;
  * Created by pc on 29.10.2014.
  */
 public class User {
-    Date today = new Date();
     public String email;
     public String nickName;
     public String password;
@@ -19,19 +18,15 @@ public class User {
 
     }
 
-    public User(String email,String nickName, String password, String repeatPassword) {
+    public User(String nickName, String password, String repeatPassword) {
         this.nickName = nickName;
         this.password = password;
         this.repeatPassword = repeatPassword;
-        this.email = email;
+        this.email = generateEmail();
     }
 
-    /*public String generateEmail(){
-        return today.getTime()+"@lolwhat.com.ua";
+    public String generateEmail(){
+        return System.currentTimeMillis()+"@lolwhat.com.ua";
     }
 
-    public String generateNickName(){
-
-        return "test"+today.getTime();
-    }*/
 }

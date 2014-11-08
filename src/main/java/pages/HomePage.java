@@ -11,9 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
 
     private static WebDriver driver;
-    public String CLOSESELECTOR = "close";
-    public String OKSELECTOR2 = "blue-button";
-    public String REGISTERLINK = "reg";
+    private static final By closeSelector  = By.className("close");
+    private static final By okSelector = By.className("blue-button");
+    private static final By registerLink = By.className("reg");
+    private static final By searchBoxLocator = By.id("searchbox");
+    private static final By doSearchLocator = By.id("doSearch");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -21,15 +23,22 @@ public class HomePage {
 
     public void closeAdvert(){
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className(CLOSESELECTOR))));
-        driver.findElement(By.className(CLOSESELECTOR)).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(closeSelector)));
+        driver.findElement(closeSelector).click();
     }
     public void skipCityPopUp(){
         WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className(OKSELECTOR2))));
-        driver.findElement(By.className(OKSELECTOR2)).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(okSelector)));
+        driver.findElement(okSelector).click();
     }
     public void reg(){
-        driver.findElement(By.className(REGISTERLINK)).click();
+        driver.findElement(registerLink).click();
+    }
+
+    public void entedSearchCriteria(String value) throws InterruptedException {
+        driver.findElement(searchBoxLocator).sendKeys(value);
+        driver.findElement(doSearchLocator).click();
+        Thread.sleep(5000);
+
     }
 }
