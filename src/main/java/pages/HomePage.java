@@ -16,9 +16,12 @@ public class HomePage {
     private static final By registerLink = By.className("reg");
     private static final By searchBoxLocator = By.id("searchbox");
     private static final By doSearchLocator = By.id("doSearch");
+    private static final By emailSelector = By.name("email");
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+
     }
 
     public void closeAdvert(){
@@ -33,6 +36,8 @@ public class HomePage {
     }
     public void reg(){
         driver.findElement(registerLink).click();
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(emailSelector)));
     }
 
     public void entedSearchCriteria(String value) throws InterruptedException {

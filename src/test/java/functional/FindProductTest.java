@@ -20,10 +20,6 @@ public class FindProductTest extends AbstractTest {
         driver.get(PAGE);
 
         HomePage homePage = new HomePage(driver);
-
-            homePage.closeAdvert();
-            homePage.skipCityPopUp();
-
         homePage.entedSearchCriteria("Iphone");
         Goods goods = new Goods(driver);
         Assert.assertTrue(goods.isGoods());
