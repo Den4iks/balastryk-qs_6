@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.Log4Test;
 
 /**
  * Created by pc on 03.11.2014.
@@ -17,7 +18,6 @@ public class HomePage {
     private static final By registerLink = By.className("reg");
     private static final By searchBoxLocator = By.id("searchbox");
     private static final By doSearchLocator = By.id("doSearch");
-    private static final By emailSelector = By.name("email");
 
 
     public HomePage(WebDriver driver) {
@@ -40,7 +40,8 @@ public class HomePage {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            Assert.fail("");
+            Log4Test.error("InterruptedException in HomePage.reg()");
+            Assert.fail("InterruptedException in HomePage.reg()");
         }
         /*WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(emailSelector)));*/
@@ -52,7 +53,8 @@ public class HomePage {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            Assert.assertFalse(true,"InterruptedException in HomePage.entedSearchCriteria()");
+            Log4Test.error("InterruptedException in HomePage.entedSearchCriteria()");
+            Assert.fail("InterruptedException in HomePage.entedSearchCriteria()");
         }
 
     }

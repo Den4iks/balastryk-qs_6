@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import utils.Log4Test;
 
 /**
  * Created by pc on 29.10.2014.
@@ -46,7 +48,8 @@ public class RegisterPage {
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Log4Test.error("InterruptedException in RegisterPage.registerNewUser()");
+            Assert.fail("InterruptedException in RegisterPage.registerNewUser()");
         }
         return true;
     }

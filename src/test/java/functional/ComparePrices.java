@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.Goods;
 import pages.HomePage;
 import pages.PricesPage;
+import utils.Log4Test;
 
 /**
  * Created by pc on 09.11.2014.
@@ -21,6 +22,7 @@ public class ComparePrices extends AbstractTest{
 
     @Test(dataProvider = "products")
     public void isAvailableSevPrices(String product){
+        Log4Test.info("Compare Price test");
         driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
           /*  homePage.closeAdvert();
@@ -29,6 +31,7 @@ public class ComparePrices extends AbstractTest{
         Goods goods = new Goods(driver);
         goods.comparePrices();
         PricesPage pricesPage = new PricesPage(driver);
+        Log4Test.info("Page with prices opened");
         Assert.assertEquals(pricesPage.allPrices().size()>=2,true,"More than 2 prices on the page");
     }
 }
