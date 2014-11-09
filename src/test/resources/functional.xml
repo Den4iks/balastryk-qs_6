@@ -8,6 +8,7 @@
         <classes>
             <class name="functional.RegisterUser" />
             <class name="functional.FindProductTest" />
+            <class name="functional.ComparePrices" />
         </classes>
     </test>
 </suite>

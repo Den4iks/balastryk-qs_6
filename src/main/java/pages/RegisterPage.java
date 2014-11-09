@@ -43,6 +43,11 @@ public class RegisterPage {
             return false;
         }*/
         driver.findElement(submitSelector).click();
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 

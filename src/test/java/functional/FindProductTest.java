@@ -5,6 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Goods;
 import pages.HomePage;
@@ -13,17 +14,22 @@ import pages.HomePage;
  * Created by pc on 05.11.2014.
  */
 public class FindProductTest extends AbstractTest {
+    @DataProvider(name = "products")
+    public Object[][] createData() {
 
+        return new Object[][] {
+                new Object[]{"Iphone",true },
+                new Object[]{"Faiiill",false}};
+    }
 
-    @Test
-    public void findProductTest() throws InterruptedException {
+    @Test(dataProvider = "products")
+    public void findProductTest(String productName,boolean testType) throws InterruptedException {
         driver.get(PAGE);
 
         HomePage homePage = new HomePage(driver);
-        homePage.entedSearchCriteria("Iphone");
+        homePage.entedSearchCriteria(productName);
         Goods goods = new Goods(driver);
-        Assert.assertTrue(goods.isGoods());
+        Assert.assertEquals((testType)?goods.isGoods():goods.noGoods(),true);
+        }
+
     }
-
-
-}

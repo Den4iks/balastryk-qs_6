@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 /**
  * Created by pc on 03.11.2014.
@@ -39,16 +40,20 @@ public class HomePage {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Assert.fail("");
         }
         /*WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(emailSelector)));*/
     }
 
-    public void entedSearchCriteria(String value) throws InterruptedException {
+    public void entedSearchCriteria(String value)  {
         driver.findElement(searchBoxLocator).sendKeys(value);
         driver.findElement(doSearchLocator).click();
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Assert.assertFalse(true,"InterruptedException in HomePage.entedSearchCriteria()");
+        }
 
     }
 }
