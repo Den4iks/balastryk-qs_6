@@ -25,8 +25,8 @@ public class ComparePrices extends AbstractTest{
         Log4Test.info("Compare Price test");
         driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
-          homePage.closeAdvert();
-            homePage.skipCityPopUp();
+        /*  homePage.closeAdvert();
+          homePage.skipCityPopUp();*/
         homePage.entedSearchCriteria(product);
         Goods goods = new Goods(driver);
         goods.comparePrices();
