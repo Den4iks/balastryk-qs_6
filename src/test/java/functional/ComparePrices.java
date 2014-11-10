@@ -25,13 +25,13 @@ public class ComparePrices extends AbstractTest{
         Log4Test.info("Compare Price test");
         driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
-          /*  homePage.closeAdvert();
-            homePage.skipCityPopUp();*/
+          homePage.closeAdvert();
+            homePage.skipCityPopUp();
         homePage.entedSearchCriteria(product);
         Goods goods = new Goods(driver);
         goods.comparePrices();
         PricesPage pricesPage = new PricesPage(driver);
         Log4Test.info("Page with prices opened");
-        Assert.assertEquals(pricesPage.allPrices().size()>=2,true,"More than 2 prices on the page");
+        Assert.assertEquals(pricesPage.returnAllUniqPrices(pricesPage.allPrices()).size()>=2,true,"More than 2 prices on the page");
     }
 }
