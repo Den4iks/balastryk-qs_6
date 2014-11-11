@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import selenium.WebDriveWrapper;
 
 /**
  * Created by pc on 03.11.2014.
@@ -10,11 +11,11 @@ import org.openqa.selenium.WebDriver;
 public class WelcomePage {
     private static final By isRegistredLocator= By.className("registr-successful");
 
-    private static WebDriver driver;
+    private static WebDriveWrapper driver;
 
     public WelcomePage(){}
 
-    public WelcomePage(WebDriver driver){
+    public WelcomePage(WebDriveWrapper driver){
         this.driver = driver;
     }
 

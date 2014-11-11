@@ -6,13 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import selenium.WebDriveWrapper;
 import utils.Log4Test;
 
 /**
  * Created by pc on 29.10.2014.
  */
 public class RegisterPage {
-    public static WebDriver driver;
+    public static WebDriveWrapper driver;
     private static final By nickNameSelector = By.name("nick");
     private static final By passwordSelector = By.name("password");
     private static final By repeatPasswordSelector = By.name("password2");
@@ -22,7 +23,7 @@ public class RegisterPage {
 
     public RegisterPage(){}
 
-    public RegisterPage(WebDriver driver){
+    public RegisterPage(WebDriveWrapper driver){
         this.driver = driver;
     }
 

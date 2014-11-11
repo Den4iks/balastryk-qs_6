@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import selenium.WebDriveWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +15,14 @@ import java.util.List;
  * Created by pc on 05.11.2014.
  */
 public class Goods {
-    public static WebDriver driver;
+    public static WebDriveWrapper driver;
 
     private final By availableSelector = By.className("tech-char");
     private final By compareSelector = By.className("but-box");
 
     private final By absentSelector = By.xpath("//div[contains(@class, 'search-result-page') and contains(@class, 'no')]");
 
-    public Goods(WebDriver driver) {
+    public Goods(WebDriveWrapper driver) {
         this.driver=driver;
     }
 

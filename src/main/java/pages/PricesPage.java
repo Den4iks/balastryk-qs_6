@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import selenium.WebDriveWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +12,12 @@ import java.util.List;
  * Created by pc on 09.11.2014.
  */
 public class PricesPage {
-    private static WebDriver driver;
+    private static WebDriveWrapper driver;
     private final By priceSelector = By.className("price");
 
     public PricesPage(){}
 
-    public PricesPage(WebDriver driver){
+    public PricesPage(WebDriveWrapper driver){
         this.driver = driver;
     }
 
