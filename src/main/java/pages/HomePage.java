@@ -51,6 +51,7 @@ public class HomePage {
 
     public void entedSearchCriteria(String value)  {
         Log4Test.info("Search criteria is being entered");
+        driver.findElement(searchBoxLocator).clear();
         driver.findElement(searchBoxLocator).sendKeys(value);
         driver.findElement(doSearchLocator).click();
         Log4Test.info("Search criteria " + value + " entered");
