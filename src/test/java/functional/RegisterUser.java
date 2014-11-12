@@ -39,17 +39,14 @@ public class RegisterUser extends AbstractTest {
     public void registerNewUser(User user,
                                 boolean positive){
         driver.get(PAGE);
-        Log4Test.info("Register User test");
         HomePage homePage = new HomePage(driver);
         if (positive) {
-            Log4Test.info("Pop-up's are being closed");
             homePage.closeAdvert();
             homePage.skipCityPopUp();
         }
         homePage.reg();
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.registerNewUser(user);
-        Log4Test.info("User details entered");
         WelcomePage welcomePage = new WelcomePage(driver);
         Assert.assertEquals((positive)?welcomePage.isOnPage():registerPage.isOnPage(),true,"If test is positive should " +
                 "be successful notification and if negative should be error ");

@@ -2,7 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import selenium.WebDriveWrapper;
@@ -19,6 +21,9 @@ public class HomePage {
     private static final By registerLink = By.className("reg");
     private static final By searchBoxLocator = By.id("searchbox");
     private static final By doSearchLocator = By.id("doSearch");
+    private static final By householdAppliances = By.xpath("//a[@href='/bt/']");
+    private static final By refrigirator = By.xpath("//a[@href='/bt/holodilniki/']");
+
 
 
     public HomePage(WebDriveWrapper driver) {
@@ -45,14 +50,21 @@ public class HomePage {
     }
 
     public void entedSearchCriteria(String value)  {
+        Log4Test.info("Search criteria is being entered");
         driver.findElement(searchBoxLocator).sendKeys(value);
         driver.findElement(doSearchLocator).click();
+        Log4Test.info("Search criteria " + value + " entered");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             Log4Test.error("InterruptedException in HomePage.entedSearchCriteria()");
             Assert.fail("InterruptedException in HomePage.entedSearchCriteria()");
         }
+    }
 
+    public void selectRefrigiratorFilter(){
+       /* Actions builder = new Actions(driver);
+        builder.moveToElement(driver.findElement(householdAppliances)).perform();
+        builder.click(driver.findElement(refrigirator)).perform();*/
     }
 }

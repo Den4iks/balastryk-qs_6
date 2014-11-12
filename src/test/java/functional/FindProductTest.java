@@ -25,11 +25,9 @@ public class FindProductTest extends AbstractTest {
 
     @Test(dataProvider = "products")
     public void findProductTest(String productName,boolean testType)  {
-        Log4Test.info("Find product test");
         driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
         homePage.entedSearchCriteria(productName);
-        Log4Test.info("Search Criteria entered");
         Goods goods = new Goods(driver);
         Assert.assertEquals((testType)?goods.isGoods():goods.noGoods(),true,"If test positive should be at once 1 result" +
                 "if test is negative shouldn't be results");

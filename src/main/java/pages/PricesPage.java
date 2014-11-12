@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import selenium.WebDriveWrapper;
+import utils.Log4Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class PricesPage {
     }
 
     public List allPrices(){
+        Log4Test.info("Get All Prices");
         List <WebElement> list = new ArrayList<WebElement>();
         list=driver.findElements(priceSelector);
         ArrayList listTexts = new ArrayList();
@@ -34,6 +36,7 @@ public class PricesPage {
     }
 
     public List returnAllUniqPrices( List list){
+        Log4Test.info("Get All Uniq Prices");
         for (int i = 0; i <list.size()-1 ; i++) {
             for (int j = 1; j <list.size()-1 ; j++) {
                 if (list.get(i).equals(list.get(j))){

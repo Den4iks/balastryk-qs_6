@@ -28,6 +28,7 @@ public class RegisterPage {
     }
 
     public boolean registerNewUser(User user){
+        Log4Test.info("User is  being registered");
         fillUserData(user);
      /*   if(!isPasswordsSame()){
             System.out.println("Passwords aren't the same");
@@ -52,14 +53,17 @@ public class RegisterPage {
             Log4Test.error("InterruptedException in RegisterPage.registerNewUser()");
             Assert.fail("InterruptedException in RegisterPage.registerNewUser()");
         }
+
         return true;
     }
 
     private void fillUserData(User user){
+        Log4Test.info("UserData is being filled");
     driver.findElement(emailSelector).sendKeys(user.email);
     driver.findElement(nickNameSelector).sendKeys(user.nickName);
     driver.findElement(passwordSelector).sendKeys(user.password);
     driver.findElement(repeatPasswordSelector).sendKeys(user.repeatPassword);
+        Log4Test.info("UserData have been filled");
     }
 
     public boolean isPasswordsSame(User user){
@@ -96,6 +100,9 @@ public class RegisterPage {
     }
 
     public boolean isOnPage(){
+        if(driver.findElement(availableEmailSelector).isDisplayed()){
+            Log4Test.info("User aren't registred");
+        }
         return driver.findElement(availableEmailSelector).isDisplayed();
     }
 
