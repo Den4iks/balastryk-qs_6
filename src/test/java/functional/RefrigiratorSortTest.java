@@ -1,10 +1,13 @@
 package functional;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Goods;
 import pages.HomePage;
+import selenium.WebDriveWrapper;
+import utils.PropertyLoader;
 
 import java.util.List;
 
@@ -15,14 +18,22 @@ public class RefrigiratorSortTest extends AbstractTest {
 
    @Test
     public void sortByPriceAndBrand(){
-       driver.get("http://hotline.ua/bt/holodilniki/");
-       HomePage homePage = new HomePage(driver);
+     if(PropertyLoader.loadProperty("browser.name").equals("htmlunit")){
+     driver.get("http://hotline.ua/bt/holodilniki/");
+      }else {
+      driver.get(PAGE);
+      HomePage homePage = new HomePage(driver);
+      /*homePage.closeAdvert();*/
+      homePage.selectRefrigiratorFilter();
+     }
        Goods goods = new Goods(driver);
        goods.selectFilterByBrandLg();
        goods.selectSortingByPrice();
-       Assert.assertTrue(isFirstPriceLowerThanSecond(goods.getAllprices()) && isProductsTheSame(goods.getAllProductNames(),"LG"),
+       Assert.assertTrue(isFirstPriceLowerThanSecond(goods.getAllprices()) && isProductsTheSame(goods.getAllProductNames(), "LG"),
                "Test will pass if first price is lower than second and First two Products have same Brands");
-    }
+
+
+   }
 
     public boolean isFirstPriceLowerThanSecond(List <WebElement> list){
         if(Integer.parseInt(list.get(0).getText().substring(0,6).replaceAll(" ",""))<Integer.parseInt(list.get(1).getText().substring(0,6).replaceAll(" ",""))) {

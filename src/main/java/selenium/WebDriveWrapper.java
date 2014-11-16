@@ -17,6 +17,10 @@ public class WebDriveWrapper implements WebDriver {
     private static WebDriver driver;
     private static final int TIME_TO_WAIT = Integer.parseInt(PropertyLoader.loadProperty("selenium.max.timeout"));
 
+    public static WebDriver getOriginalDriver() {
+        return driver;
+    }
+
     public WebDriveWrapper(WebDriver driver) {
          this.driver = driver;
     }

@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -63,9 +62,19 @@ public class HomePage {
         }
     }
 
-    public void selectRefrigiratorFilter(){
-       /* Actions builder = new Actions(driver);
+    public void selectRefrigiratorFilter() {
+        Actions builder = new Actions(driver.getOriginalDriver());
         builder.moveToElement(driver.findElement(householdAppliances)).perform();
-        builder.click(driver.findElement(refrigirator)).perform();*/
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(refrigirator).click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
