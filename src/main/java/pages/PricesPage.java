@@ -15,6 +15,8 @@ import java.util.List;
 public class PricesPage {
     private static WebDriveWrapper driver;
     private final By priceSelector = By.className("price");
+    private static Log4Test mLog = new Log4Test(PricesPage.class.getName());
+
 
     public PricesPage(){}
 
@@ -23,7 +25,7 @@ public class PricesPage {
     }
 
     public List allPrices(){
-        Log4Test.info("Get All Prices");
+        mLog.info("Get All Prices");
         List <WebElement> list = new ArrayList<WebElement>();
         list=driver.findElements(priceSelector);
         ArrayList listTexts = new ArrayList();
@@ -36,7 +38,7 @@ public class PricesPage {
     }
 
     public List returnAllUniqPrices( List list){
-        Log4Test.info("Get All Uniq Prices");
+        mLog.info("Get All Uniq Prices");
         for (int i = 0; i <list.size()-1 ; i++) {
             for (int j = 1; j <list.size()-1 ; j++) {
                 if (list.get(i).equals(list.get(j))){

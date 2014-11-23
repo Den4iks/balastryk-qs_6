@@ -27,6 +27,8 @@ public class Goods {
     private final By getAllNames = By.xpath("//div[@class='title-box']/h3/a");
     private final By sortingByPrice = By.xpath("//a[@href='http://hotline.ua/bt/holodilniki/627/?sort=0']");
     private final By absentSelector = By.xpath("//div[contains(@class, 'search-result-page') and contains(@class, 'no')]");
+    private static Log4Test mLog = new Log4Test(Goods.class.getName());
+
 
     public Goods(WebDriveWrapper driver) {
         this.driver=driver;
@@ -34,20 +36,20 @@ public class Goods {
 
     public boolean isGoods(){
     if(driver.findElement(availableSelector).isDisplayed()){
-      Log4Test.info("Current product have been found");
+        mLog.info("Current product have been found");
     }
         return driver.findElement(availableSelector).isDisplayed();
     }
 
     public boolean noGoods(){
      if(driver.findElement(absentSelector).isDisplayed()){
-         Log4Test.info("Current product aren't found");
+         mLog.info("Current product aren't found");
       }
         return driver.findElement(absentSelector).isDisplayed();
     }
 
     public void comparePrices(){
-        Log4Test.info("Prices is being compired");
+        mLog.info("Prices is being compired");
        driver.findElement(compareSelector).click();
         try {
             Thread.sleep(3000);
@@ -57,7 +59,7 @@ public class Goods {
     }
 
     public void selectFilterByBrandLg(){
-        Log4Test.info("Filter by Brand is being selected");
+        mLog.info("Filter by Brand is being selected");
         driver.findElement(filterLG).click();
         try {
             Thread.sleep(2000);
@@ -67,7 +69,7 @@ public class Goods {
     }
 
     public void selectSortingByPrice(){
-        Log4Test.info("Sorting by price is being selected");
+        mLog.info("Sorting by price is being selected");
         driver.findElement(dropDownOpen).click();
         try {
             Thread.sleep(2000);

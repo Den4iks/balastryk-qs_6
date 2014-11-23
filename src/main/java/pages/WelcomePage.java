@@ -11,6 +11,7 @@ import utils.Log4Test;
 
 public class WelcomePage {
     private static final By isRegistredLocator= By.className("registr-successful");
+    private static Log4Test mLog = new Log4Test(WelcomePage.class.getName());
 
     private static WebDriveWrapper driver;
 
@@ -22,7 +23,7 @@ public class WelcomePage {
 
     public boolean isOnPage(){
     if(driver.findElement(isRegistredLocator).isDisplayed()){
-        Log4Test.info("User have been registered");
+        mLog.info("User have been registered");
     }
         return driver.findElement(isRegistredLocator).isDisplayed();
     }

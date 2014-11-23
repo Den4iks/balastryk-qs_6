@@ -22,6 +22,7 @@ public class HomePage {
     private static final By doSearchLocator = By.id("doSearch");
     private static final By householdAppliances = By.xpath("//a[@href='/bt/']");
     private static final By refrigirator = By.xpath("//a[@href='/bt/holodilniki/']");
+    private static Log4Test mLog = new Log4Test(HomePage.class.getName());
 
 
 
@@ -41,7 +42,7 @@ public class HomePage {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            Log4Test.error("InterruptedException in HomePage.reg()");
+            mLog.error("InterruptedException in HomePage.reg()");
             Assert.fail("InterruptedException in HomePage.reg()");
         }
         /*WebDriverWait wait = new WebDriverWait(driver,10);
@@ -49,15 +50,15 @@ public class HomePage {
     }
 
     public void entedSearchCriteria(String value)  {
-        Log4Test.info("Search criteria is being entered");
+        mLog.info("Search criteria is being entered");
         driver.findElement(searchBoxLocator).clear();
         driver.findElement(searchBoxLocator).sendKeys(value);
         driver.findElement(doSearchLocator).click();
-        Log4Test.info("Search criteria " + value + " entered");
+        mLog.info("Search criteria " + value + " entered");
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
-            Log4Test.error("InterruptedException in HomePage.entedSearchCriteria()");
+            mLog.error("InterruptedException in HomePage.entedSearchCriteria()");
             Assert.fail("InterruptedException in HomePage.entedSearchCriteria()");
         }
     }

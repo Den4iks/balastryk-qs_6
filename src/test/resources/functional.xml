@@ -10,6 +10,7 @@
             <class name="functional.FindProductTest" />
             <class name="functional.ComparePrices" />
             <class name="functional.RefrigiratorSortTest" />
+            <class name="functional.ScreenShootTestFail" />
         </classes>
         <!--<packages>
             <package name="functional"></package>

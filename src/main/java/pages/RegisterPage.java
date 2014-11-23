@@ -20,6 +20,8 @@ public class RegisterPage {
     private static final By emailSelector = By.name("email");
     private static final By submitSelector = By.className("blue-button");
     private static final By availableEmailSelector = By.className("errors");
+    private static Log4Test mLog = new Log4Test(RegisterPage.class.getName());
+
 
     public RegisterPage(){}
 
@@ -28,7 +30,7 @@ public class RegisterPage {
     }
 
     public boolean registerNewUser(User user){
-        Log4Test.info("User is  being registered");
+        mLog.info("User is  being registered");
         fillUserData(user);
      /*   if(!isPasswordsSame()){
             System.out.println("Passwords aren't the same");
@@ -50,7 +52,7 @@ public class RegisterPage {
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
-            Log4Test.error("InterruptedException in RegisterPage.registerNewUser()");
+            mLog.error("InterruptedException in RegisterPage.registerNewUser()");
             Assert.fail("InterruptedException in RegisterPage.registerNewUser()");
         }
 
@@ -58,12 +60,12 @@ public class RegisterPage {
     }
 
     private void fillUserData(User user){
-        Log4Test.info("UserData is being filled");
+        mLog.info("UserData is being filled");
     driver.findElement(emailSelector).sendKeys(user.email);
     driver.findElement(nickNameSelector).sendKeys(user.nickName);
     driver.findElement(passwordSelector).sendKeys(user.password);
     driver.findElement(repeatPasswordSelector).sendKeys(user.repeatPassword);
-        Log4Test.info("UserData have been filled");
+        mLog.info("UserData have been filled");
     }
 
     public boolean isPasswordsSame(User user){
@@ -101,7 +103,7 @@ public class RegisterPage {
 
     public boolean isOnPage(){
         if(driver.findElement(availableEmailSelector).isDisplayed()){
-            Log4Test.info("User aren't registred");
+            mLog.info("User aren't registred");
         }
         return driver.findElement(availableEmailSelector).isDisplayed();
     }

@@ -22,7 +22,6 @@ public class ComparePrices extends AbstractTest{
 
     @Test(dataProvider = "products")
     public void isAvailableSevPrices(String product){
-        driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
         /*  homePage.closeAdvert();
           homePage.skipCityPopUp();*/

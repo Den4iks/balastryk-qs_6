@@ -22,7 +22,6 @@ import java.util.List;
  */
 public class RegisterUser extends AbstractTest {
 
-    private User user = new User("test","1234","1234");
 
 
     @DataProvider(name = "users")
@@ -38,7 +37,7 @@ public class RegisterUser extends AbstractTest {
     @Test(dataProvider = "users")
     public void registerNewUser(User user,
                                 boolean positive){
-        driver.get(PAGE);
+
         HomePage homePage = new HomePage(driver);
         if (positive) {
             homePage.closeAdvert();

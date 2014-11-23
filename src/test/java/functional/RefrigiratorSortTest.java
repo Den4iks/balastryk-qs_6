@@ -21,9 +21,7 @@ public class RefrigiratorSortTest extends AbstractTest {
      if(PropertyLoader.loadProperty("browser.name").equals("htmlunit")){
      driver.get("http://hotline.ua/bt/holodilniki/");
       }else {
-      driver.get(PAGE);
       HomePage homePage = new HomePage(driver);
-      /*homePage.closeAdvert();*/
       homePage.selectRefrigiratorFilter();
      }
        Goods goods = new Goods(driver);

@@ -7,6 +7,8 @@ import java.util.Properties;
 
 public class PropertyLoader {
     private static final String PROPERTY_FILE = "/application.properties";
+    private static Log4Test mLog = new Log4Test(PropertyLoader.class.getName());
+
 
     public static String loadProperty(String name)
     {
@@ -14,7 +16,7 @@ public class PropertyLoader {
         try {
             props.load(PropertyLoader.class.getResourceAsStream(PROPERTY_FILE));
         } catch (IOException e) {
-            Assert.fail(Log4Test.info(name));
+            Assert.fail(mLog.info(name));
         }
         String value = "";
         if (name != null)

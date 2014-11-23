@@ -25,7 +25,6 @@ public class FindProductTest extends AbstractTest {
 
     @Test(dataProvider = "products")
     public void findProductTest(String productName,boolean testType)  {
-        driver.get(PAGE);
         HomePage homePage = new HomePage(driver);
         homePage.entedSearchCriteria(productName);
         Goods goods = new Goods(driver);
